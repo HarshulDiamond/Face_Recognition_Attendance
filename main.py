@@ -1,9 +1,3 @@
-# import site
-# import sys
-#
-# from Scripts.activate_this import lib
-
-
 import cv2
 import face_recognition
 import os
@@ -33,7 +27,7 @@ def findEncoding(images):
 
 def markAttendance(name):
     with open('Attendance.csv','r+') as f:
-        myDataList=f.readline()
+        myDataList=f.readlines()
         nameList=[]
         for line in myDataList:
             entry = line.split(',')
@@ -42,10 +36,6 @@ def markAttendance(name):
             now = datetime.now()
             dtString=now.strftime('%H:%M:%S')
             f.writelines(f'\n{name},{dtString}')
-
-
-
-
 
 encodeListKnown = findEncoding(images)
 # print(len(encodeListUnknown))
